@@ -41,12 +41,14 @@ export class DatatableComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
-
-  onDelete(id) {
-    this.onDeleteEvent.emit(id);
+  ngOnInit() {
+    console.log(this.lista);
   }
-  onEdit(id) {
-    this.onEditEvent.emit(id);
+
+  onDelete(item) {
+    this.onDeleteEvent.emit(item.idDipendente);
+  }
+  onEdit(item) {
+    this.onEditEvent.emit(item.idDipendente);
   }
 }

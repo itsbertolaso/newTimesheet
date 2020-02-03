@@ -16,11 +16,11 @@ const routes: Routes = [
     component: DipendentiPageComponent
   },
   {
-    path: "dipendenti/new",
+    path: "dipendenti/create",
     component: NewDipendentiPageComponent
   },
   {
-    path: "dipendenti/edit/:id",
+    path: "dipendenti/update/:id",
     component: EditDipendentiPageComponent
   },
   {

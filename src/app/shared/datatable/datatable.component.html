@@ -23,12 +23,12 @@
         {{ item[k.name] }}
       </td>
       <td *ngIf="delete">
-        <button class="btn btn-danger" (click)="onDelete(item.id)">
+        <button class="btn btn-danger" (click)="onDelete(item)">
           <i class="fa fa-trash"></i>
         </button>
       </td>
       <td *ngIf="edit">
-        <button class="btn btn-primary" (click)="onEdit(item.id)">
+        <button class="btn btn-primary" (click)="onEdit(item)">
           <i class="fa fa-edit"></i>
         </button>
       </td>

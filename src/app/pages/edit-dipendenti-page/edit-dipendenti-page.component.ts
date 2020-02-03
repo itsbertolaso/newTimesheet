@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from "@angular/forms";
 import { DipendentiService } from "src/core/service/dipendenti.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { DomainService } from "src/core/service/domain.service";
+import { ApiService } from 'src/core/service/api.service';
 
 @Component({
   selector: "app-edit-dipendenti-page",
@@ -22,7 +23,8 @@ export class EditDipendentiPageComponent implements OnInit {
     public router: Router,
     public dipendente: DipendentiService,
     public routeActive: ActivatedRoute,
-    public country: DomainService
+    public country: DomainService,
+    public api: ApiService
   ) {}
 
   ngOnInit() {

@@ -12,6 +12,7 @@ import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-d
 
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
+import { ApiService } from 'src/core/service/api.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,9 @@ import { HttpClientModule } from "@angular/common/http";
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
