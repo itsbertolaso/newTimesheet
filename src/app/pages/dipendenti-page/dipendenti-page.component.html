@@ -12,7 +12,7 @@
           </div>
           <div class="col px-0 rounded" style="overflow: auto;">
             <app-datatable
-              [lista]="lista['response']"
+              [lista]="lista"
               [options]="options"
               selectiontype="single"
               style="display: flex; flex:1"
@@ -29,7 +29,10 @@
       <div class="row">
         <div class="col d-flex justify-content-center">
           <div class="text-center">
-            <button class="btn btn-primary" [routerLink]="['/dipendenti/new']">
+            <button
+              class="btn btn-primary"
+              [routerLink]="['/dipendenti/create']"
+            >
               Aggiungi
             </button>
           </div>

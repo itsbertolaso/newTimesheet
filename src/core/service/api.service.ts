@@ -24,7 +24,7 @@ export class ApiService {
   }
   public filter(path: string, key: string, value: any) {
     if (value) {
-      return this.http.get(this.host + "/" + path + "?" + key + "=" + value);
+      return this.http.get(this.host + "/" + path + "/" + key + "/" + value);
     } else {
       return this.get(path);
     }

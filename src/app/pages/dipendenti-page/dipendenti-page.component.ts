@@ -11,7 +11,6 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./dipendenti-page.component.scss"]
 })
 export class DipendentiPageComponent implements OnInit {
-
   public path = "api/dipendenti/delete";
 
   options: DataTableOptions = {
@@ -58,7 +57,7 @@ export class DipendentiPageComponent implements OnInit {
 
   ngOnInit() {
     this.dipendenteService.getAll().subscribe(res => {
-      this.lista = res;
+      this.lista = res.response;
     });
   }
 
@@ -83,11 +82,9 @@ export class DipendentiPageComponent implements OnInit {
     this.router.navigate(["dipendenti/update", id]);
   }
   filter(res: any) {
-    console.log(res);
-    this.dipendenteService
-      .filter(res.key, res.filter)
-      .subscribe((res: any[]) => {
-        this.lista = res;
-      });
+    this.dipendenteService.filter(res.key, res.filter).subscribe((res: any) => {
+      console.log("RISPOSTA FILTRO", res);
+      this.lista = res.response;
+    });
   }
 }
