@@ -13,6 +13,7 @@ import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-d
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { ApiService } from 'src/core/service/api.service';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { ApiService } from 'src/core/service/api.service';
     DipendentiPageComponent,
     DettaglioDipendentiPageComponent,
     NewDipendentiPageComponent,
-    EditDipendentiPageComponent
+    EditDipendentiPageComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
