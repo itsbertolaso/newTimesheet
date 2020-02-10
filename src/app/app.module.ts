@@ -19,7 +19,9 @@ import { AuthenticationGuard } from './shared/guard/authentication.guard';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { CardModule } from 'primeng/card';
+import {PasswordModule} from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,7 @@ import { ButtonModule } from 'primeng/button';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    CardModule,ButtonModule
+    CardModule,ButtonModule,PasswordModule,InputTextModule
    
   ],
   providers: [

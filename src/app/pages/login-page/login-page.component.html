@@ -1,9 +1,19 @@
-<p-card header="Advanced Card" subheader="Subheader" [style]="{width: '360px'}" styleClass="ui-card-shadow">
+<p-card  [style]="{width: '360px'}" styleClass="ui-card-shadow">
     <p-header>
         <img src="Card" src="/assets/image/logo.jpg">
     </p-header>
-    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt
-        quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!</div>
+
+    <div>
+        <h3>Username</h3>
+<span class="ui-float-label">
+    <input id="float-input" type="text" size="30" pInputText> 
+    <label for="float-input">Username</label>
+</span>
+        
+        <h3 class="first">Password</h3>
+        <input pPassword type="password"/>
+    
+    </div>
     <p-footer>
         <button pButton type="button" label="Accedi" icon="pi pi-check" style="margin-right: .25em"></button>
         <button pButton type="button" label="Nuovo" icon="pi pi-times" class="ui-button-secondary"></button>
