@@ -1,21 +1,42 @@
-<p-card  [style]="{width: '360px'}" styleClass="ui-card-shadow">
-    <p-header>
-        <img src="Card" src="/assets/image/logo.jpg">
-    </p-header>
-
+<p-card
+  header="ITS Kennedy"
+  subheader="Login"
+  [style]="{ width: '450px' }"
+  styleClass="ui-card-shadow"
+>
+  <p-header>
+    <img src="ITS" src="assets/image/logo.jpg" />
+  </p-header>
+  <div style="padding-top: 8%">
+    <span class="ui-float-label">
+      <input id="float-input" type="text" size="30" pInputText />
+      <label for="float-input">Username</label>
+    </span>
+  </div>
+  <div style="padding-top: 8%">
+    <span class="ui-float-label">
+      <!--<input id="float-input" type="text" size="30" pInputText />
+      <label for="float-input">Password</label>-->
+      <input id="float-input" type="password" size="30" pPassword />
+      <label for="float-input">Password</label>
+    </span>
+  </div>
+  <p-footer>
     <div>
-        <h3>Username</h3>
-<span class="ui-float-label">
-    <input id="float-input" type="text" size="30" pInputText> 
-    <label for="float-input">Username</label>
-</span>
-        
-        <h3 class="first">Password</h3>
-        <input pPassword type="password"/>
-    
+      <button
+        pButton
+        type="button"
+        label="Login"
+        class="ui-button-rounded"
+      ></button>
     </div>
-    <p-footer>
-        <button pButton type="button" label="Accedi" icon="pi pi-check" style="margin-right: .25em"></button>
-        <button pButton type="button" label="Nuovo" icon="pi pi-times" class="ui-button-secondary"></button>
-    </p-footer>
+    <div>
+      <button
+        pButton
+        type="button"
+        label="Sign In"
+        class="ui-button-rounded ui-button-secondary"
+      ></button>
+    </div>
+  </p-footer>
 </p-card>
