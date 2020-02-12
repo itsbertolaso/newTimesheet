@@ -7,51 +7,59 @@
       styleClass="ui-card-shadow"
     >
       <p-header>
+  
         <img src="ITS" src="assets/image/logo.jpg" />
       </p-header>
+      <form [formGroup]="loginForm">
       <div class="row d-flex justify-content-center">
         <div style="padding-top: 3%">
           <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText />
+            <input id="float-input" type="text" size="30" pInputText formControlName="username" />
             <label for="float-input">Username</label>
           </span>
         </div>
         <div style="padding-top: 8%">
           <span class="ui-float-label">
-            <!--<input id="float-input" type="text" size="30" pInputText />
+            <!--<input id="float-input" type="text" size="30" pInputText formControlName="password" />
           <label for="float-input">Password</label>-->
             <input
               id="float-input"
               type="password"
               size="30"
               pPassword
-              [feedback]="false"
+              [feedback]="true"
+              
             />
             <label for="float-input">Password</label>
           </span>
         </div>
       </div>
+    </form>
       <div class="row d-flex justify-content-center">
         <p-footer class="row" style="padding-top: 4%;">
           <div class="col">
             <button
+            [disabled]="!this.loginForm.valid"
               pButton
               type="button"
               label="Login"
               class="ui-button-rounded"
+              (click)="onLogin()"
             ></button>
           </div>
           <div>
             <button
+              
               pButton
               type="button"
-              label="Sign In"
+              label="Register"
               class="ui-button-rounded ui-button-secondary"
               routerLink="/register"
             ></button>
           </div>
         </p-footer>
       </div>
+  
     </p-card>
   </div>
 </div>
