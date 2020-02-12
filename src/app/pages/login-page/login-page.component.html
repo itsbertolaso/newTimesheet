@@ -1,42 +1,50 @@
-<p-card
-  header="ITS Kennedy"
-  subheader="Login"
-  [style]="{ width: '450px' }"
-  styleClass="ui-card-shadow"
->
-  <p-header>
-    <img src="ITS" src="assets/image/logo.jpg" />
-  </p-header>
-  <div style="padding-top: 8%">
-    <span class="ui-float-label">
-      <input id="float-input" type="text" size="30" pInputText />
-      <label for="float-input">Username</label>
-    </span>
+<div class="col h-100 d-inline-block" style="margin-top: 10%;">
+  <div class="row d-flex justify-content-center ">
+    <p-card
+      header="ITS Kennedy"
+      subheader="Login"
+      [style]="{ width: '450px' }"
+      styleClass="ui-card-shadow"
+    >
+      <p-header>
+        <img src="ITS" src="assets/image/logo.jpg" />
+      </p-header>
+      <div class="row d-flex justify-content-center">
+        <div style="padding-top: 3%">
+          <span class="ui-float-label">
+            <input id="float-input" type="text" size="30" pInputText />
+            <label for="float-input">Username</label>
+          </span>
+        </div>
+        <div style="padding-top: 8%">
+          <span class="ui-float-label">
+            <!--<input id="float-input" type="text" size="30" pInputText />
+          <label for="float-input">Password</label>-->
+            <input id="float-input" type="password" size="30" pPassword />
+            <label for="float-input">Password</label>
+          </span>
+        </div>
+      </div>
+      <div class="row d-flex justify-content-center">
+        <p-footer class="row" style="padding-top: 4%;">
+          <div class="col">
+            <button
+              pButton
+              type="button"
+              label="Login"
+              class="ui-button-rounded"
+            ></button>
+          </div>
+          <div>
+            <button
+              pButton
+              type="button"
+              label="Sign In"
+              class="ui-button-rounded ui-button-secondary"
+            ></button>
+          </div>
+        </p-footer>
+      </div>
+    </p-card>
   </div>
-  <div style="padding-top: 8%">
-    <span class="ui-float-label">
-      <!--<input id="float-input" type="text" size="30" pInputText />
-      <label for="float-input">Password</label>-->
-      <input id="float-input" type="password" size="30" pPassword />
-      <label for="float-input">Password</label>
-    </span>
-  </div>
-  <p-footer>
-    <div>
-      <button
-        pButton
-        type="button"
-        label="Login"
-        class="ui-button-rounded"
-      ></button>
-    </div>
-    <div>
-      <button
-        pButton
-        type="button"
-        label="Sign In"
-        class="ui-button-rounded ui-button-secondary"
-      ></button>
-    </div>
-  </p-footer>
-</p-card>
+</div>
