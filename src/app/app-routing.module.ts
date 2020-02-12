@@ -7,12 +7,12 @@ import { NewDipendentiPageComponent } from "./pages/new-dipendenti-page/new-dipe
 import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-dipendenti-page.component";
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { AuthenticationGuard } from './shared/guard/authentication.guard';
+import { RegisterPageComponent } from './pages/register-page/register-page/register-page.component';
 
 const routes: Routes = [
   {
     path: "home",
     component: HomePageComponent,
-    canActivate:[AuthenticationGuard]
   },
   {
     path: "dipendenti",
@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: "login",
     component: LoginPageComponent
+  },
+  {
+    path: "register",
+    component: RegisterPageComponent
   },
   {
     path: "dipendenti/create",

@@ -22,6 +22,7 @@ import { CardModule } from 'primeng/card';
 import {PasswordModule} from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import {InputTextModule} from 'primeng/inputtext';
+import { RegisterPageComponent } from './pages/register-page/register-page/register-page.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {InputTextModule} from 'primeng/inputtext';
     DettaglioDipendentiPageComponent,
     NewDipendentiPageComponent,
     EditDipendentiPageComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
