@@ -29,7 +29,9 @@ export class LoginPageComponent implements OnInit {
 
     let isUserLogged = this.auth.login(this.loginForm.value);
     if(isUserLogged){
+      if(this.loginForm.controls['username'].value=="chiave"){
       this.auth.setAuthenticated();
+      }
       this.router.navigate(['/dipendenti']);
 
     }else{

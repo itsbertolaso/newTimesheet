@@ -12,4 +12,9 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit() {
   }
 
+  Registra(){
+    
+
+  }
+
 }
