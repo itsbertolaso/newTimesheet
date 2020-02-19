@@ -1,4 +1,8 @@
-import { Component, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from "@angular/core";
 import { DataTableOptions } from "./api/datatable-options";
 import { DipendentiService } from "src/core/service/dipendenti.service";
 
@@ -9,5 +13,7 @@ import { DipendentiService } from "src/core/service/dipendenti.service";
 })
 export class AppComponent {
   constructor() {}
+
   public title: string = "timesheet";
+  changeDetection: ChangeDetectionStrategy.Default;
 }

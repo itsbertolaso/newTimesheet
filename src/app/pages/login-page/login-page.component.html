@@ -18,7 +18,7 @@
                 type="text"
                 size="30"
                 pInputText
-                formControlName="username"
+                formControlName="name"
               />
               <label for="float-input">Username</label>
             </span>
@@ -33,6 +33,7 @@
                 size="30"
                 pPassword
                 [feedback]="false"
+                formControlName="password"
               />
               <label for="float-input">Password</label>
             </span>
@@ -43,7 +44,6 @@
         <p-footer class="row" style="padding-top: 4%;">
           <div class="col">
             <button
-            
               pButton
               type="button"
               label="Login"

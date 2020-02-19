@@ -1,10 +1,9 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, Inject } from "@angular/core";
 
-import { from as observableFrom, of as observableOf, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
-import { ApiService } from 'src/core/service/api.service';
-
+import { from as observableFrom, of as observableOf, Observable } from "rxjs";
+import { map } from "rxjs/operators";
+import { Router } from "@angular/router";
+import { ApiService } from "src/core/service/api.service";
 
 export interface Credentials {
   // Customize received credentials here
@@ -17,7 +16,7 @@ export interface LoginContext {
   password: string;
 }
 
-const credentialsKey = 'token';
+const credentialsKey = "token";
 
 /**
  * Provides a base for authentication workflow.
@@ -25,19 +24,14 @@ const credentialsKey = 'token';
  */
 @Injectable()
 export class AuthenticationService {
-
-  private path: string ="userController";
+  private path: string = "api/user/login";
 
   public token: boolean = false;
 
   private _credentials: string;
   private _features: any = null;
-  
-  constructor(
-    private router: Router,
-    public api: ApiService
-    
-    ) {
+
+  constructor(private router: Router, public api: ApiService) {
     this._credentials = localStorage.getItem(credentialsKey);
   }
 
@@ -48,10 +42,9 @@ export class AuthenticationService {
    */
   login(context: LoginContext): Observable<any> {
     let bodyString = JSON.stringify(context); // Stringify payload
-    let headers = new Headers({ 'Content-Type': 'application/json' }); // ... Set content type to JSON
-    
-    return this.api.post(this.path, bodyString);
-    
+    let headers = new Headers({ "Content-Type": "application/json" }); // ... Set content type to JSON
+    console.log("Body: ", bodyString);
+    return this.api.post(this.path, context);
   }
 
   /**
@@ -64,9 +57,9 @@ export class AuthenticationService {
     return observableOf(true);
   }
 
-  logOut(){
+  logOut() {
     this.token = false;
-    this.router.navigate(['/login'], { replaceUrl: true });
+    this.router.navigate(["/login"], { replaceUrl: true });
   }
 
   /**
@@ -76,7 +69,13 @@ export class AuthenticationService {
 
   isAuthenticated(): boolean {
     try {
-      return (this.token);
+      if (window.sessionStorage.getItem("token")) {
+        console.log("test");
+        this.token = true;
+      } else {
+        this.token = false;
+      }
+      return this.token;
     } catch (e) {
       return false;
     }
@@ -85,7 +84,7 @@ export class AuthenticationService {
   setAuthenticated(): boolean {
     try {
       this.token = true;
-      return (this.token);
+      return this.token;
     } catch (e) {
       return false;
     }
@@ -115,5 +114,4 @@ export class AuthenticationService {
       localStorage.removeItem(credentialsKey);
     }
   }
-
 }

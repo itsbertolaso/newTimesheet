@@ -5,19 +5,20 @@ import { DipendentiPageComponent } from "./pages/dipendenti-page/dipendenti-page
 import { DettaglioDipendentiPageComponent } from "./pages/dettaglio-dipendenti-page/dettaglio-dipendenti-page.component";
 import { NewDipendentiPageComponent } from "./pages/new-dipendenti-page/new-dipendenti-page.component";
 import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-dipendenti-page.component";
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { AuthenticationGuard } from './shared/guard/authentication.guard';
-import { RegisterPageComponent } from './pages/register-page/register-page/register-page.component';
+import { LoginPageComponent } from "./pages/login-page/login-page.component";
+import { AuthenticationGuard } from "./shared/guard/authentication.guard";
+import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
 
 const routes: Routes = [
   {
     path: "home",
     component: HomePageComponent,
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "dipendenti",
     component: DipendentiPageComponent,
-    canActivate:[AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "login",
@@ -30,28 +31,28 @@ const routes: Routes = [
   {
     path: "dipendenti/create",
     component: NewDipendentiPageComponent,
-    canActivate:[AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "dipendenti/update/:id",
     component: EditDipendentiPageComponent,
-    canActivate:[AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "dipendenti/:id",
     component: DettaglioDipendentiPageComponent,
-    canActivate:[AuthenticationGuard]
+    canActivate: [AuthenticationGuard]
   },
   {
     path: "**",
     component: HomePageComponent,
-    canActivate:[AuthenticationGuard],
+    canActivate: [AuthenticationGuard]
   },
   {
-    path: '',
+    path: "",
     component: HomePageComponent,
-    canActivate:[AuthenticationGuard],
-    pathMatch: 'full',
+    canActivate: [AuthenticationGuard],
+    pathMatch: "full"
   }
 ];
 
