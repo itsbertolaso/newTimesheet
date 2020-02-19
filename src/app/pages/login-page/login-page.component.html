@@ -7,34 +7,38 @@
       styleClass="ui-card-shadow"
     >
       <p-header>
-  
         <img src="ITS" src="assets/image/logo.jpg" />
       </p-header>
       <form [formGroup]="loginForm">
-      <div class="row d-flex justify-content-center">
-        <div style="padding-top: 3%">
-          <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText formControlName="username" />
-            <label for="float-input">Username</label>
-          </span>
-        </div>
-        <div style="padding-top: 8%">
-          <span class="ui-float-label">
-            <!--<input id="float-input" type="text" size="30" pInputText formControlName="password" />
+        <div class="row d-flex justify-content-center">
+          <div style="padding-top: 3%">
+            <span class="ui-float-label">
+              <input
+                id="float-input"
+                type="text"
+                size="30"
+                pInputText
+                formControlName="username"
+              />
+              <label for="float-input">Username</label>
+            </span>
+          </div>
+          <div style="padding-top: 8%">
+            <span class="ui-float-label">
+              <!--<input id="float-input" type="text" size="30" pInputText formControlName="password" />
           <label for="float-input">Password</label>-->
-            <input
-              id="float-input"
-              type="password"
-              size="30"
-              pPassword
-              [feedback]="true"
-              
-            />
-            <label for="float-input">Password</label>
-          </span>
+              <input
+                id="float-input"
+                type="password"
+                size="30"
+                pPassword
+                [feedback]="false"
+              />
+              <label for="float-input">Password</label>
+            </span>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
       <div class="row d-flex justify-content-center">
         <p-footer class="row" style="padding-top: 4%;">
           <div class="col">
@@ -49,7 +53,6 @@
           </div>
           <div>
             <button
-              
               pButton
               type="button"
               label="Register"
@@ -59,7 +62,6 @@
           </div>
         </p-footer>
       </div>
-  
     </p-card>
   </div>
 </div>
