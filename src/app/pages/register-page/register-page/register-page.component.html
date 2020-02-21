@@ -1,18 +1,25 @@
 <div class="col h-100 d-inline-block" style="margin-top: 10%;">
-    <div class="row d-flex justify-content-center ">
-      <p-card
-        header="ITS Kennedy"
-        subheader="Register"
-        [style]="{ width: '450px' }"
-        styleClass="ui-card-shadow"
-      >
-        <p-header>
-          <img src="ITS" src="assets/image/logo.jpg" />
-        </p-header>
+  <div class="row d-flex justify-content-center ">
+    <p-card
+      header="ITS Kennedy"
+      subheader="Register"
+      [style]="{ width: '450px' }"
+      styleClass="ui-card-shadow"
+    >
+      <p-header>
+        <img src="ITS" src="assets/image/logo.jpg" />
+      </p-header>
+      <form [formGroup]="registerForm">
         <div class="row d-flex justify-content-center">
           <div style="padding-top: 3%">
             <span class="ui-float-label">
-              <input id="float-input" type="text" size="30" pInputText />
+              <input
+                id="float-input"
+                type="text"
+                size="30"
+                pInputText
+                formControlName="name"
+              />
               <label for="float-input">Username</label>
             </span>
           </div>
@@ -26,7 +33,7 @@
                 size="30"
                 pPassword
                 [feedback]="true"
-                
+                formControlName="password"
               />
               <label for="float-input">Password</label>
             </span>
@@ -41,6 +48,7 @@
                 size="30"
                 pPassword
                 [feedback]="false"
+                formControlName="confirmpassword"
               />
               <label for="float-input">Conferma Password</label>
             </span>
@@ -54,7 +62,7 @@
                 type="button"
                 label="Register"
                 class="ui-button-rounded"
-                (click)="Registra()"
+                (click)="onRegister()"
               ></button>
             </div>
             <div>
@@ -68,7 +76,7 @@
             </div>
           </p-footer>
         </div>
-      </p-card>
-    </div>
+      </form>
+    </p-card>
   </div>
-  
+</div>

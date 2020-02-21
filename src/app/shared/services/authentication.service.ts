@@ -24,7 +24,7 @@ const credentialsKey = "token";
  */
 @Injectable()
 export class AuthenticationService {
-  private path: string = "api/user/login";
+  private path: string = "api/login";
 
   public token: boolean = false;
 
@@ -43,8 +43,15 @@ export class AuthenticationService {
   login(context: LoginContext): Observable<any> {
     let bodyString = JSON.stringify(context); // Stringify payload
     let headers = new Headers({ "Content-Type": "application/json" }); // ... Set content type to JSON
-    console.log("Body: ", bodyString);
+    console.log("Body login: ", bodyString);
     return this.api.post(this.path, context);
+  }
+
+  register(context: any): Observable<any> {
+    let bodyString = JSON.stringify(context); // Stringify payload
+    let headers = new Headers({ "Content-Type": "application/json" }); // ... Set content type to JSON
+    console.log("Body register: ", bodyString);
+    return this.api.post(this.path + "/register", context);
   }
 
   /**
@@ -70,7 +77,6 @@ export class AuthenticationService {
   isAuthenticated(): boolean {
     try {
       if (window.sessionStorage.getItem("token")) {
-        console.log("test");
         this.token = true;
       } else {
         this.token = false;
