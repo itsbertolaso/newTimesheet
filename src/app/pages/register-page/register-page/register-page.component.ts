@@ -37,6 +37,10 @@ export class RegisterPageComponent implements OnInit {
         console.log(res);
         if (res.status === 200) {
           this.router.navigate(["/"], { replaceUrl: true });
+        } else {
+          if (res.status === 409) {
+            alert("Utente gia registrato"); //alert temporaneo
+          }
         }
       });
   }
