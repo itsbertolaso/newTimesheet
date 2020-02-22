@@ -35,7 +35,7 @@ export class RegisterPageComponent implements OnInit {
       })
       .subscribe(res => {
         console.log(res);
-        if (res.status === 200) {
+        if (res.status === 201) {
           this.router.navigate(["/"], { replaceUrl: true });
         } else {
           if (res.status === 409) {

@@ -29,6 +29,11 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(["/dipendenti"], { replaceUrl: true });
         }
       }
+      else {
+        if (res.status === 404) {
+          alert("username error"); //alert temporaneo
+        }
+      }
     });
   }
 
