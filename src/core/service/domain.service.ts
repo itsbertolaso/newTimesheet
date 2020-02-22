@@ -15,6 +15,20 @@ export class DomainService {
   public getAll(): Observable<any> {
     return this.api.get(this.countries);
   }
+
+  getCity(id: string) {
+    return this.api.get(this.cities + "/id/" + id);
+  }
+  getCountry(id: string) {
+    return this.api.get(this.countries + "/id/" + id);
+  }
+  getRegion(id: string) {
+    return this.api.get(this.region + "/id/" + id);
+  }
+  getProvince(id: string) {
+    return this.api.get(this.province + "/id/" + id);
+  }
+
   getByIso(iso: string) {
     return this.api.get(this.countries + "?iso=" + iso);
   }

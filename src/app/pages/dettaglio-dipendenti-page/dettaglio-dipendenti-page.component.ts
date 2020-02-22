@@ -24,12 +24,13 @@ export class DettaglioDipendentiPageComponent implements OnInit {
   ngOnInit() {
     const id = this.routeActive.snapshot.params.id;
     this.apiService.get(this.path + id).subscribe(res => {
-      this.soggetto = res.response;
+      res = res.response;
+      this.soggetto = {
+        name: res.name,
+        surname: res.surname,
+        taxcode: res.taxcode,
+        city: res.citta.name
+      };
     });
-    /*  this.dipendente.getById(id).subscribe(res => {
-      let s = { ...res };
-      this.soggetto = s.response;
-      console.log(this.soggetto);
-    }); */
   }
 }
