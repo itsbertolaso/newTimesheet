@@ -25,6 +25,16 @@
         </div>
         <div class="row">
           <div class="form-group col">
+            <label for="gender">Gender</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="gender"
+              aria-describedby="genderHelp"
+              placeholder="Male/Female/Other"
+            />
+          </div>
+          <div class="form-group col">
             <label for="taxCode">Tax Code</label>
             <input
               type="text"
@@ -33,6 +43,8 @@
               placeholder="Tax Code"
             />
           </div>
+        </div>
+        <div class="row">
           <div class="form-group col">
             <label for="country">Country</label>
             <select
@@ -41,19 +53,6 @@
               (change)="updateRegion($event)"
             >
               <option *ngFor="let cc of allCountry" [value]="cc.idNazione">
-                {{ cc.name }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col">
-            <label for="city">City</label>
-            <select
-              class="browser-default custom-select"
-              formControlName="city"
-            >
-              <option *ngFor="let cc of cities" [value]="cc.idCity">
                 {{ cc.name }}
               </option>
             </select>
@@ -85,33 +84,25 @@
             </select>
           </div>
           <div class="form-group col">
+            <label for="city">City</label>
+            <select
+              class="browser-default custom-select"
+              formControlName="city"
+            >
+              <option *ngFor="let cc of cities" [value]="cc.idCity">
+                {{ cc.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col">
             <label for="address">Address</label>
             <input
               type="text"
               class="form-control"
               formControlName="address"
               placeholder="Address"
-            />
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col">
-            <label for="gender">Gender</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="gender"
-              aria-describedby="genderHelp"
-              placeholder="Male/Female/Other"
-            />
-          </div>
-          <div class="form-group col">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="email"
-              placeholder="email"
             />
           </div>
         </div>

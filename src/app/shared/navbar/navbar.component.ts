@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -12,7 +13,16 @@ export class NavbarComponent implements OnInit {
     this.navbarOpen = !this.navbarOpen;
   }
 
-  constructor() {}
+  constructor(public router: Router) {}
 
   ngOnInit() {}
+
+  isLoggedIn() {
+    return window.sessionStorage.getItem("token").length > 0;
+  }
+
+  logOff() {
+    window.sessionStorage.clear();
+    this.router.navigate(["/login"], { replaceUrl: true });
+  }
 }
