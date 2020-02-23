@@ -17,7 +17,7 @@
     id="navbarNav"
     [ngClass]="{ show: navbarOpen }"
   >
-    <ul class="navbar-nav">
+    <ul class="navbar-nav" *ngIf="isLoggedIn()">
       <li class="nav-item active">
         <a class="nav-link" routerLink="home">Home </a>
       </li>
@@ -27,8 +27,11 @@
     </ul>
     <ul class="navbar-nav ml-sm-auto" *ngIf="isLoggedIn()">
       <li class="ml-auto mr-1 nav-item active">
-        <a (click)="logOff()" style="cursor: pointer;"
-          ><h1><i class="fa fa-sign-out"></i></h1
+        <a
+          (click)="logOff()"
+          style="font-size: 1.70em;
+                 cursor: pointer;"
+          ><i class="fa fa-sign-out"></i
         ></a>
       </li>
     </ul>
