@@ -68,7 +68,7 @@ export class DipendentiPageComponent implements OnInit {
   onDeleteHandler(id: any) {
     this.api.delete(this.path, id).subscribe(r => {
       this.api.get("api/dipendenti/").subscribe(res => {
-        this.lista = res;
+        this.lista = res.response;
       });
     });
     /* this.dipendenteService.deleteById(id).subscribe(r => {

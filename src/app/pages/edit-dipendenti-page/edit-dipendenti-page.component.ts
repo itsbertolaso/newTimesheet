@@ -56,10 +56,10 @@ export class EditDipendentiPageComponent implements OnInit {
     //   });
     // });
 
-    const id = this.routeActive.snapshot.params.id;
+    this.id = this.routeActive.snapshot.params.id;
     this.country.getAll().subscribe(res => {
       this.allCountry = res.response;
-      this.apiService.get(this.path + id).subscribe(res => {
+      this.apiService.get(this.path + this.id).subscribe(res => {
         res = res.response;
         this.country.getProvince(res.citta.idProv).subscribe(prov => {
           this.country.getRegion(prov.response.idRegione).subscribe(region => {
@@ -97,7 +97,7 @@ export class EditDipendentiPageComponent implements OnInit {
 
   conferma() {
     this.dipendente
-      .replace(this.id, { ...this.formgroup.value })
+      .replace({ id: this.id, ...this.formgroup.value })
       .subscribe(res => {
         this.router.navigate(["dipendenti"]);
       });
