@@ -14,9 +14,12 @@ export class EditDipendentiPageComponent implements OnInit {
   public formgroup: FormGroup;
   public soggetto;
   public id;
-  public allCountry: any[]; //
+  public allCountry: any[];
   public regions: any[];
   public cities: any[];
+  public province: any[];
+
+  public path = "api/dipendenti/id/";
 
   constructor(
     public fb: FormBuilder,
@@ -24,7 +27,7 @@ export class EditDipendentiPageComponent implements OnInit {
     public dipendente: DipendentiService,
     public routeActive: ActivatedRoute,
     public country: DomainService,
-    public api: ApiService
+    public apiService: ApiService
   ) {}
 
   ngOnInit() {
@@ -52,53 +55,108 @@ export class EditDipendentiPageComponent implements OnInit {
     //     });
     //   });
     // });
-  }
-  // conferma() {
-  //   this.dipendente
-  //     .replace({ id: this.id, ...this.formgroup.value })
-  //     .subscribe(res => {
-  //       this.router.navigate(["dipendenti"]);
-  //     });
-  // }
 
-  // updateRegion(event: any) {
-  //   this.country.getRegionInCountry(event.target.value).subscribe(res => {
-  //     this.regions = res;
-  //     this.formgroup = this.fb.group({
-  //       name: [this.formgroup.value.name],
-  //       surname: [this.formgroup.value.surname],
-  //       taxCode: [this.formgroup.value.taxCode],
-  //       country: [this.formgroup.value.country],
-  //       city: [this.formgroup.value.city],
-  //       province: [this.regions[0].description],
-  //       phoneNumber: [this.formgroup.value.phoneNumber],
-  //       address: [this.formgroup.value.address],
-  //       gender: [this.formgroup.value.gender],
-  //       email: [this.formgroup.value.email]
-  //     });
-  //     this.updateCity({
-  //       target: {
-  //         value: this.formgroup.value.province
-  //       }
-  //     });
-  //   });
-  // }
-  // updateCity(event: any) {
-  //   this.country.getCitiesInRegion(event.target.value).subscribe(res => {
-  //     console.log(res);
-  //     this.cities = res;
-  //     this.formgroup = this.fb.group({
-  //       name: [this.formgroup.value.name],
-  //       surname: [this.formgroup.value.surname],
-  //       taxCode: [this.formgroup.value.taxCode],
-  //       country: [this.formgroup.value.country],
-  //       city: [this.cities[0].description],
-  //       province: [this.formgroup.value.province],
-  //       phoneNumber: [this.formgroup.value.phoneNumber],
-  //       address: [this.formgroup.value.address],
-  //       gender: [this.formgroup.value.gender],
-  //       email: [this.formgroup.value.email]
-  //     });
-  //   });
-  // }
+    const id = this.routeActive.snapshot.params.id;
+    this.country.getAll().subscribe(res => {
+      this.allCountry = res.response;
+      this.apiService.get(this.path + id).subscribe(res => {
+        res = res.response;
+        this.country.getProvince(res.citta.idProv).subscribe(prov => {
+          this.country.getRegion(prov.response.idRegione).subscribe(region => {
+            this.country.getByIso(region.response.isoCountry).subscribe(cou => {
+              this.country
+                .getRegionInCountry(cou.response.idNazione)
+                .subscribe(resp => {
+                  this.regions = resp.response;
+                  this.country
+                    .getProvinceInRegion(region.response.idRegion)
+                    .subscribe(resp => {
+                      this.province = resp.response;
+                      this.country
+                        .getCitiesInProvince(prov.response.idProvincia)
+                        .subscribe(resp => {
+                          this.cities = resp.response;
+                          this.formgroup = this.fb.group({
+                            name: [res.name],
+                            surname: [res.surname],
+                            taxCode: [res.taxcode],
+                            city: [res.citta.idCity],
+                            province: [prov.response.idProvincia],
+                            region: [region.response.idRegion],
+                            country: [cou.response.idNazione]
+                          });
+                        });
+                    });
+                });
+            });
+          });
+        });
+      });
+    });
+  }
+
+  conferma() {
+    this.dipendente
+      .replace(this.id, { ...this.formgroup.value })
+      .subscribe(res => {
+        this.router.navigate(["dipendenti"]);
+      });
+  }
+
+  updateRegion(event: any) {
+    this.country.getRegionInCountry(event.target.value).subscribe(res => {
+      this.regions = res.response;
+      this.formgroup = this.fb.group({
+        name: [this.formgroup.value.name],
+        surname: [this.formgroup.value.surname],
+        taxCode: [this.formgroup.value.taxCode],
+        country: [this.formgroup.value.country],
+        city: [this.formgroup.value.city],
+        region: [this.regions[0].idRegion],
+        province: [this.formgroup.value.province]
+      });
+      this.updateProvince({
+        target: {
+          value: this.formgroup.value.region
+        }
+      });
+    });
+  }
+  updateProvince(event: any) {
+    this.country.getProvinceInRegion(event.target.value).subscribe(res => {
+      this.province = res.response;
+
+      this.formgroup = this.fb.group({
+        name: [this.formgroup.value.name],
+        surname: [this.formgroup.value.surname],
+        taxCode: [this.formgroup.value.taxCode],
+        country: [this.formgroup.value.country],
+        city: [this.formgroup.value.city],
+        province: [this.province[0].idProvincia],
+        region: [this.formgroup.value.region]
+      });
+      console.log(this.formgroup.value.province);
+      this.updateCity({
+        target: {
+          value: this.formgroup.value.province
+        }
+      });
+    });
+  }
+  updateCity(event: any) {
+    this.country.getCitiesInProvince(event.target.value).subscribe(res => {
+      this.cities = res.response;
+      console.log("Citta ", res);
+
+      this.formgroup = this.fb.group({
+        name: [this.formgroup.value.name],
+        surname: [this.formgroup.value.surname],
+        taxCode: [this.formgroup.value.taxCode],
+        country: [this.formgroup.value.country],
+        city: [this.cities[0].idCity],
+        province: [this.formgroup.value.province],
+        region: [this.formgroup.value.region]
+      });
+    });
+  }
 }

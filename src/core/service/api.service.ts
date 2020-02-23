@@ -20,7 +20,7 @@ export class ApiService {
     return this.http.delete(this.host + "/" + path + "/" + id);
   }
   public replace(path: string, id: string, body: any): Observable<any> {
-    return this.http.patch(this.host + "/" + path + "/" + id, body);
+    return this.http.put(this.host + "/" + path + "/update/" + id, body);
   }
   public filter(path: string, key: string, value: any) {
     if (value) {

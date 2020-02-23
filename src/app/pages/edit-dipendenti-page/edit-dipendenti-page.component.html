@@ -24,6 +24,7 @@
           </div>
         </div>
         <div class="row">
+          <div class="col"></div>
           <div class="form-group col">
             <label for="taxCode">Tax Code</label>
             <input
@@ -33,6 +34,9 @@
               placeholder="Tax Code"
             />
           </div>
+          <div class="col"></div>
+        </div>
+        <div class="row">
           <div class="form-group col">
             <label for="country">Country</label>
             <select
@@ -40,32 +44,19 @@
               formControlName="country"
               (change)="updateRegion($event)"
             >
-              <option *ngFor="let cc of allCountry" [value]="cc.iso">
-                {{ cc.description }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col">
-            <label for="city">City</label>
-            <select
-              class="browser-default custom-select"
-              formControlName="city"
-            >
-              <option *ngFor="let cc of cities" [value]="cc.description">
-                {{ cc.description }}
+              <option *ngFor="let cc of allCountry" [value]="cc.idNazione">
+                {{ cc.name }}
               </option>
             </select>
           </div>
           <div class="form-group col">
-            <label for="province">Province</label>
+            <label for="region">Regione</label>
             <select
               class="browser-default custom-select"
-              formControlName="province"
-              (change)="updateCity($event)"
+              formControlName="region"
+              (change)="updateProvince($event)"
             >
-              <option *ngFor="let cc of regions" [value]="cc.description">{{
+              <option *ngFor="let cc of regions" [value]="cc.idRegion">{{
                 cc.description
               }}</option>
             </select>
@@ -73,46 +64,30 @@
         </div>
         <div class="row">
           <div class="form-group col">
-            <label for="phoneNumber">Phone Number</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="phoneNumber"
-              aria-describedby="phoneHelp"
-              placeholder="Phone Number"
-            />
+            <label for="province">Province</label>
+            <select
+              class="browser-default custom-select"
+              formControlName="province"
+              (change)="updateCity($event)"
+            >
+              <option *ngFor="let cc of province" [value]="cc.idProvincia">{{
+                cc.description
+              }}</option>
+            </select>
           </div>
           <div class="form-group col">
-            <label for="address">Address</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="address"
-              placeholder="Address"
-            />
+            <label for="city">City</label>
+            <select
+              class="browser-default custom-select"
+              formControlName="city"
+            >
+              <option *ngFor="let cc of cities" [value]="cc.idCity">
+                {{ cc.name }}
+              </option>
+            </select>
           </div>
         </div>
-        <div class="row">
-          <div class="form-group col">
-            <label for="gender">Gender</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="gender"
-              aria-describedby="genderHelp"
-              placeholder="Male/Female/Other"
-            />
-          </div>
-          <div class="form-group col">
-            <label for="email">Email</label>
-            <input
-              type="text"
-              class="form-control"
-              formControlName="email"
-              placeholder="email"
-            />
-          </div>
-        </div>
+
         <div class="text-center">
           <button class="btn btn-primary" (click)="conferma()">
             Conferma

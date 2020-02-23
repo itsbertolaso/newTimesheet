@@ -30,8 +30,8 @@ export class DipendentiService {
   public deleteById(id: string): Observable<any> {
     return this.api.delete(this.path, id);
   }
-  replace(item: any): Observable<any> {
-    return this.api.replace(this.path, item.id, item);
+  replace(id: any, item: any): Observable<any> {
+    return this.api.replace(this.path, id, item);
   }
   filter(key: string, value: any) {
     return this.api.filter(this.path, key, value);
