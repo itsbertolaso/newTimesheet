@@ -26,7 +26,7 @@
           <div style="padding-top: 8%">
             <span class="ui-float-label">
               <!--<input id="float-input" type="text" size="30" pInputText formControlName="password" />
-          <label for="float-input">Password</label>-->
+                <label for="float-input">Password</label>-->
               <input
                 id="float-input-password"
                 type="password"
@@ -40,6 +40,17 @@
           </div>
         </div>
       </form>
+      <div
+        id="errorContainer"
+        class="d-inline-block w-100"
+        style="height: 1.7em;"
+      >
+        <div class="justify-content-center d-flex">
+          <b class="mt-2 text-danger" *ngIf="errorVisible"
+            >Wrong username or password</b
+          >
+        </div>
+      </div>
       <div class="row d-flex justify-content-center">
         <p-footer class="row" style="padding-top: 4%;">
           <div class="col">

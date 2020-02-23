@@ -9,11 +9,13 @@ import { DipendentiService } from "src/core/service/dipendenti.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
+  host: {
+    "(document:storage)": "onStorageChange($event)"
+  }
 })
 export class AppComponent {
   constructor() {}
 
   public title: string = "timesheet";
-  changeDetection: ChangeDetectionStrategy.Default;
 }

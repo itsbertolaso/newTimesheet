@@ -10,7 +10,7 @@ import { Component, OnInit } from "@angular/core";
 })
 export class LoginPageComponent implements OnInit {
   public loginForm: FormGroup;
-
+  public errorVisible: boolean = false;
   constructor(
     private FormBuilder: FormBuilder,
     public router: Router,
@@ -27,11 +27,12 @@ export class LoginPageComponent implements OnInit {
         if (res.response.jwt) {
           window.sessionStorage.setItem("token", res.response.jwt);
           this.router.navigate(["/dipendenti"], { replaceUrl: true });
+        } else {
+          this.errorVisible = true;
         }
-      }
-      else {
+      } else {
         if (res.status === 404) {
-          alert("username error"); //alert temporaneo
+          this.errorVisible = true;
         }
       }
     });
