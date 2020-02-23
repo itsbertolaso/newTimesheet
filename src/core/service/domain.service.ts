@@ -28,10 +28,10 @@ export class DomainService {
   getProvince(id: string) {
     return this.api.get(this.province + "/id/" + id);
   }
-
   getByIso(iso: string) {
-    return this.api.get(this.countries + "?iso=" + iso);
+    return this.api.get(this.countries + "/id/" + iso);
   }
+
   getRegionInCountry(iso) {
     return this.api.get(this.region + "/nazione/" + iso);
   }
