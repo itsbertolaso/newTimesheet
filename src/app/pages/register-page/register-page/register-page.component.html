@@ -23,7 +23,7 @@
               <label for="float-input">Username</label>
             </span>
           </div>
-          <div style="padding-top: 8%">
+          <div class="pt-4">
             <span class="ui-float-label">
               <!--<input id="float-input" type="text" size="30" pInputText />
             <label for="float-input">Password</label>-->
@@ -36,9 +36,14 @@
                 formControlName="password"
               />
               <label for="float-input">Password</label>
+              <div *ngIf="form.password.errors">
+                <b class="text-danger" *ngIf="form.password.errors.minlength"
+                  >Password troppo corta</b
+                >
+              </div>
             </span>
           </div>
-          <div style="padding-top: 8%">
+          <div class="pt-4">
             <span class="ui-float-label">
               <!--<input id="float-input" type="text" size="30" pInputText />
             <label for="float-input">Password</label>-->
@@ -51,6 +56,13 @@
                 formControlName="confirmpassword"
               />
               <label for="float-input">Conferma Password</label>
+              <div *ngIf="form.password.errors">
+                <b
+                  class="text-danger"
+                  *ngIf="form.confirmpassword.errors.mustMatch"
+                  >Le password devono essere uguali</b
+                >
+              </div>
             </span>
           </div>
         </div>

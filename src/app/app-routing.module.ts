@@ -8,6 +8,7 @@ import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-d
 import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { AuthenticationGuard } from "./shared/guard/authentication.guard";
 import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 const routes: Routes = [
   {

@@ -12,17 +12,16 @@ import { EditDipendentiPageComponent } from "./pages/edit-dipendenti-page/edit-d
 
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { ApiService } from 'src/core/service/api.service';
+import { ApiService } from "src/core/service/api.service";
 
-
-import { AuthenticationGuard } from './shared/guard/authentication.guard';
-import { AuthenticationService } from './shared/services/authentication.service';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { CardModule } from 'primeng/card';
-import {PasswordModule} from 'primeng/password';
-import { ButtonModule } from 'primeng/button';
-import {InputTextModule} from 'primeng/inputtext';
-import { RegisterPageComponent } from './pages/register-page/register-page/register-page.component';
+import { AuthenticationGuard } from "./shared/guard/authentication.guard";
+import { AuthenticationService } from "./shared/services/authentication.service";
+import { LoginPageComponent } from "./pages/login-page/login-page.component";
+import { CardModule } from "primeng/card";
+import { PasswordModule } from "primeng/password";
+import { ButtonModule } from "primeng/button";
+import { InputTextModule } from "primeng/inputtext";
+import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
 
 @NgModule({
   declarations: [
@@ -42,14 +41,12 @@ import { RegisterPageComponent } from './pages/register-page/register-page/regis
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    CardModule,ButtonModule,PasswordModule,InputTextModule
-   
+    CardModule,
+    ButtonModule,
+    PasswordModule,
+    InputTextModule
   ],
-  providers: [
-    ApiService,
-     AuthenticationGuard,
-    AuthenticationService,
-  ],
+  providers: [ApiService, AuthenticationGuard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
