@@ -42,7 +42,7 @@ export class EditDipendentiPageComponent implements OnInit {
     //         this.formgroup = this.fb.group({
     //           name: [dipendente.name],
     //           surname: [dipendente.surname],
-    //           taxCode: [dipendente.taxCode],
+    //           taxcode: [dipendente.taxcode],
     //           country: [dipendente.country],
     //           city: [dipendente.city],
     //           province: [dipendente.province],
@@ -59,8 +59,10 @@ export class EditDipendentiPageComponent implements OnInit {
     this.id = this.routeActive.snapshot.params.id;
     this.country.getAll().subscribe(res => {
       this.allCountry = res.response;
+
       this.apiService.get(this.path + this.id).subscribe(res => {
         res = res.response;
+        console.log(res);
         this.country.getProvince(res.citta.idProv).subscribe(prov => {
           this.country.getRegion(prov.response.idRegione).subscribe(region => {
             this.country.getByIso(region.response.isoCountry).subscribe(cou => {
@@ -79,8 +81,8 @@ export class EditDipendentiPageComponent implements OnInit {
                           this.formgroup = this.fb.group({
                             name: [res.name],
                             surname: [res.surname],
-                            taxCode: [res.taxcode],
-                            city: [res.citta.idCity],
+                            taxcode: [res.taxcode],
+                            citta: [res.citta.idCity],
                             province: [prov.response.idProvincia],
                             region: [region.response.idRegion],
                             country: [cou.response.idNazione]
@@ -96,11 +98,20 @@ export class EditDipendentiPageComponent implements OnInit {
   }
 
   conferma() {
-    this.dipendente
-      .replace({ id: this.id, ...this.formgroup.value })
-      .subscribe(res => {
-        this.router.navigate(["dipendenti"]);
-      });
+    let val = this.formgroup.value;
+
+    let final = {
+      id: this.id,
+      name: val.name,
+      surname: val.surname,
+      taxcode: val.taxcode,
+      citta: this.cities.find(citta => {
+        return citta.idCity === val.citta;
+      })
+    };
+    this.dipendente.replace(final).subscribe(res => {
+      this.router.navigate(["dipendenti"]);
+    });
   }
 
   updateRegion(event: any) {
@@ -109,9 +120,9 @@ export class EditDipendentiPageComponent implements OnInit {
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],
-        taxCode: [this.formgroup.value.taxCode],
+        taxcode: [this.formgroup.value.taxcode],
         country: [this.formgroup.value.country],
-        city: [this.formgroup.value.city],
+        citta: [this.formgroup.value.citta],
         region: [this.regions[0].idRegion],
         province: [this.formgroup.value.province]
       });
@@ -129,9 +140,9 @@ export class EditDipendentiPageComponent implements OnInit {
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],
-        taxCode: [this.formgroup.value.taxCode],
+        taxcode: [this.formgroup.value.taxcode],
         country: [this.formgroup.value.country],
-        city: [this.formgroup.value.city],
+        citta: [this.formgroup.value.citta],
         province: [this.province[0].idProvincia],
         region: [this.formgroup.value.region]
       });
@@ -151,9 +162,9 @@ export class EditDipendentiPageComponent implements OnInit {
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],
         surname: [this.formgroup.value.surname],
-        taxCode: [this.formgroup.value.taxCode],
+        taxcode: [this.formgroup.value.taxcode],
         country: [this.formgroup.value.country],
-        city: [this.cities[0].idCity],
+        citta: [this.cities[0].idCity],
         province: [this.formgroup.value.province],
         region: [this.formgroup.value.region]
       });
