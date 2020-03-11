@@ -59,10 +59,8 @@ export class EditDipendentiPageComponent implements OnInit {
     this.id = this.routeActive.snapshot.params.id;
     this.country.getAll().subscribe(res => {
       this.allCountry = res.response;
-
       this.apiService.get(this.path + this.id).subscribe(res => {
         res = res.response;
-        console.log(res);
         this.country.getProvince(res.citta.idProv).subscribe(prov => {
           this.country.getRegion(prov.response.idRegione).subscribe(region => {
             this.country.getByIso(region.response.isoCountry).subscribe(cou => {
@@ -146,7 +144,6 @@ export class EditDipendentiPageComponent implements OnInit {
         province: [this.province[0].idProvincia],
         region: [this.formgroup.value.region]
       });
-      console.log(this.formgroup.value.province);
       this.updateCity({
         target: {
           value: this.formgroup.value.province
@@ -157,7 +154,6 @@ export class EditDipendentiPageComponent implements OnInit {
   updateCity(event: any) {
     this.country.getCitiesInProvince(event.target.value).subscribe(res => {
       this.cities = res.response;
-      console.log("Citta ", res);
 
       this.formgroup = this.fb.group({
         name: [this.formgroup.value.name],

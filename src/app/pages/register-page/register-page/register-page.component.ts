@@ -32,7 +32,6 @@ export class RegisterPageComponent implements OnInit {
           password: this.registerForm.value.password
         })
         .subscribe(res => {
-          console.log(res);
           if (res.status === 201) {
             this.router.navigate(["/"], { replaceUrl: true });
           } else {

@@ -37,8 +37,6 @@ export class LoginPageComponent implements OnInit {
   onLogin() {
     if (!this.loginForm.invalid) {
       this.auth.login(this.loginForm.value).subscribe(res => {
-        console.log(res);
-
         if (res.status === 200) {
           if (res.response.jwt) {
             window.sessionStorage.setItem("token", res.response.jwt);

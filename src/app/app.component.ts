@@ -9,10 +9,7 @@ import { DipendentiService } from "src/core/service/dipendenti.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"],
-  host: {
-    "(document:storage)": "onStorageChange($event)"
-  }
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
   constructor() {}
