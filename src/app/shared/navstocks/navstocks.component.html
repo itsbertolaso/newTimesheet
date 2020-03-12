@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-primary" *ngIf="isLoggedIn()">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="toggleNavbar()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse"
+      id="navbarNav"
+      [ngClass]="{ show: navbarOpen }"
+    >
+        <span class="navbar-text">
+            Company name: 
+        </span>
+        <span class="navbar-text">
+            Stock price: 
+        </span>
+    </div>
+  </nav>
+  

@@ -22,6 +22,7 @@ import { PasswordModule } from "primeng/password";
 import { ButtonModule } from "primeng/button";
 import { InputTextModule } from "primeng/inputtext";
 import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
+import { NavstocksComponent } from './shared/navstocks/navstocks.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RegisterPageComponent } from "./pages/register-page/register-page/regis
     NewDipendentiPageComponent,
     EditDipendentiPageComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    NavstocksComponent
   ],
   imports: [
     BrowserModule,

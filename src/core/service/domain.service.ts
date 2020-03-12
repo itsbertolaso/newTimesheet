@@ -11,6 +11,7 @@ export class DomainService {
   private readonly region = "api/regioni";
   private readonly cities = "api/citta";
   private readonly province = "api/province";
+  private readonly stock = "api/stock";
 
   public getAll(): Observable<any> {
     return this.api.get(this.countries);
@@ -19,15 +20,19 @@ export class DomainService {
   getCity(id: string) {
     return this.api.get(this.cities + "/id/" + id);
   }
+
   getCountry(id: string) {
     return this.api.get(this.countries + "/id/" + id);
   }
+
   getRegion(id: string) {
     return this.api.get(this.region + "/id/" + id);
   }
+
   getProvince(id: string) {
     return this.api.get(this.province + "/id/" + id);
   }
+
   getByIso(iso: string) {
     return this.api.get(this.countries + "/id/" + iso);
   }
@@ -35,10 +40,16 @@ export class DomainService {
   getRegionInCountry(iso) {
     return this.api.get(this.region + "/nazione/" + iso);
   }
+
   getProvinceInRegion(region) {
     return this.api.get(this.province + "/regione/" + region);
   }
+
   getCitiesInProvince(province) {
     return this.api.get(this.cities + "/idProv/" + province);
+  }
+
+  getStock(token: string) {
+    return this.api.get(this.stock + "/get/" + token);
   }
 }
