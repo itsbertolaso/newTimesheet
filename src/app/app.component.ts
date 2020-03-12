@@ -5,6 +5,7 @@ import {
 } from "@angular/core";
 import { DataTableOptions } from "./api/datatable-options";
 import { DipendentiService } from "src/core/service/dipendenti.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-root",
@@ -12,7 +13,13 @@ import { DipendentiService } from "src/core/service/dipendenti.service";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  constructor() {}
+  constructor(public router: Router) { }
 
   public title: string = "timesheet";
+
+  /*isLoggedIn() {
+    window.sessionStorage.getItem("token") != null;
+    this.router.navigate(["/login"]);
+  }*/
 }
+

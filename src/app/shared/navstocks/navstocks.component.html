@@ -5,11 +5,11 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNav" [ngClass]="{ show: navbarOpen }">
     <div *ngFor="let k of generic">
-      <span class="navbar-text">
-        Company name: {{k.name}}
+      <span class="navbar-text" style="text-decoration: solid;">
+        {{k.name}}:
       </span>
       <span class="navbar-text">
-        Stock price: {{k.price}}
+        {{k.price}}$
       </span>
     </div>
   </div>
