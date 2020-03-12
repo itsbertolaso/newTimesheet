@@ -8,28 +8,23 @@ import { DomainService } from 'src/core/service/domain.service';
 })
 export class NavstocksComponent implements OnInit {
 
-  private company: any[];
-  private price: any[];
+  public company: any[];
+  public price: any[];
 
   constructor(public domainService: DomainService) { }
 
   ngOnInit() {
     this.domainService.getStock(window.sessionStorage.getItem("token")).subscribe(res => {
       console.log("res.response ", res.response);
-      /* res.response.(element => {
-        this.company = element["name"];
-        this.price = element["price"];
-      });
-      console.log(this.company, this.price); */
-      let temp = Array.from(res.response);
-      /* temp.forEach(function(element) {
-        console.log("ciao ",element["name"]);
-      }); */
-      for(var k in res.response) {
-        for(var y in res.response.FB) {
-          console.log("y", y);
+      for (var k in res.response) {
+        //this.company.push(k);
+        for (var y in res.response[k]) {
+          if (y == "price") {
+            console.log(k, res.response[k][y]);
+            //this.price.push(res.response[k][y]);
+          }
         }
-     }
+      }
     });
   }
 
