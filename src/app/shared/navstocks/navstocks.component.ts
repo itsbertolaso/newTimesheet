@@ -13,11 +13,11 @@ export class NavstocksComponent implements OnInit {
   constructor(public domainService: DomainService) { }
 
   ngOnInit() {
-    this.stockCall(this.domainService, this.generic);
+    this.stockCall(this.domainService);
     setInterval(this.stockCall, 6000, this.domainService, this.generic);
   }
 
-  stockCall(domainService, generic) {
+  stockCall(domainService) {
     this.generic = [];
     domainService.getStock(window.sessionStorage.getItem("token")).subscribe(res => {
       console.log("Calling stock api...");
