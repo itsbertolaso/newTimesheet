@@ -48,7 +48,4 @@ export class DomainService {
   getCitiesInProvince(province) {
     return this.api.get(this.cities + "/idProv/" + province);
   }
-  getStock(token) {
-    return this.stockapi.getStock(token);
-  }
 }
