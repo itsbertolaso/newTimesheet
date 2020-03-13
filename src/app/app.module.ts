@@ -23,6 +23,7 @@ import { ButtonModule } from "primeng/button";
 import { InputTextModule } from "primeng/inputtext";
 import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
 import { NavstocksComponent } from './shared/navstocks/navstocks.component';
+import { StockEditComponent } from './pages/stock-edit/stock-edit.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NavstocksComponent } from './shared/navstocks/navstocks.component';
     EditDipendentiPageComponent,
     LoginPageComponent,
     RegisterPageComponent,
-    NavstocksComponent
+    NavstocksComponent,
+    StockEditComponent
   ],
   imports: [
     BrowserModule,

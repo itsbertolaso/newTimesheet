@@ -9,6 +9,7 @@ import { LoginPageComponent } from "./pages/login-page/login-page.component";
 import { AuthenticationGuard } from "./shared/guard/authentication.guard";
 import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
 import { ReactiveFormsModule } from "@angular/forms";
+import { StockEditComponent } from './pages/stock-edit/stock-edit.component';
 
 const routes: Routes = [
   {
@@ -45,6 +46,10 @@ const routes: Routes = [
     canActivate: [AuthenticationGuard]
   },
   {
+    path: "stock/update",
+    component: StockEditComponent
+  },
+  {
     path: "**",
     component: HomePageComponent,
     canActivate: [AuthenticationGuard]
@@ -61,4 +66,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

@@ -9,11 +9,11 @@ import { StockService } from "src/core/service/stock.service";
 export class NavstocksComponent implements OnInit {
   public generic: Array<any> = [];
 
-  constructor(public domainService: StockService) {}
+  constructor(public domainService: StockService) { }
 
   ngOnInit() {
     this.stockCall(this.domainService);
-    setInterval(this.stockCall, 6000, this.domainService, this.generic);
+    //setInterval(this.stockCall, 6000, this.domainService, this.generic);
   }
 
   stockCall(domainService) {
@@ -27,6 +27,8 @@ export class NavstocksComponent implements OnInit {
           this.generic.push(res.response[k]);
         }
       });
+
+    console.log("Navstock: ", this.generic);
   }
 
   isLoggedIn() {

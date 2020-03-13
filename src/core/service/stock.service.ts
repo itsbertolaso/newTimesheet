@@ -16,7 +16,13 @@ export class StockService {
   }
 
   addStock(token: string, stockList: Array<any>): Observable<any> {
-    stockList["token"] = token;
-    return this.api.post("/update", stockList);
+    /* let temp = {
+      "token": token
+    };
+
+    stockList["token"] = temp; */
+    console.log("Sono dentro a addStock, questa è la lista: ", stockList);
+
+    return this.api.post(this.stock + "/update", stockList[token]);
   }
 }
