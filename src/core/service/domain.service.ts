@@ -6,12 +6,12 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class DomainService {
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService) { }
   private readonly countries = "api/nazioni";
   private readonly region = "api/regioni";
   private readonly cities = "api/citta";
   private readonly province = "api/province";
-  private readonly stock = "api/stock";
+
 
   public getAll(): Observable<any> {
     return this.api.get(this.countries);
@@ -47,9 +47,5 @@ export class DomainService {
 
   getCitiesInProvince(province) {
     return this.api.get(this.cities + "/idProv/" + province);
-  }
-
-  getStock(token: string) {
-    return this.api.get(this.stock + "/get/" + token);
   }
 }
