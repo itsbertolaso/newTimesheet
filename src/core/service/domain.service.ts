@@ -1,17 +1,17 @@
 import { Injectable } from "@angular/core";
 import { ApiService } from "./api.service";
 import { Observable } from "rxjs";
+import { StockService } from "./stock.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class DomainService {
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private stockapi: StockService) {}
   private readonly countries = "api/nazioni";
   private readonly region = "api/regioni";
   private readonly cities = "api/citta";
   private readonly province = "api/province";
-
 
   public getAll(): Observable<any> {
     return this.api.get(this.countries);
@@ -47,5 +47,8 @@ export class DomainService {
 
   getCitiesInProvince(province) {
     return this.api.get(this.cities + "/idProv/" + province);
+  }
+  getStock(token) {
+    return this.stockapi.getStock(token);
   }
 }
