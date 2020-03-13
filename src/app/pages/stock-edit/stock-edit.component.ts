@@ -34,7 +34,7 @@ export class StockEditComponent implements OnInit {
   }
 
   invia(temp) {
-    this.stockService.addStock(window.sessionStorage.getItem("token"), temp).subscribe(res => {
+    this.stockService.addStock(temp).subscribe(res => {
       console.log("Res: ", res);
     });
   }
