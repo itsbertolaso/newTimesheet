@@ -8,9 +8,19 @@ import { StockService } from 'src/core/service/stock.service';
 })
 export class StockEditComponent implements OnInit {
 
-  constructor(public stockService: StockService) { }
-
   private stockList: Array<any> = [];
+  private selectedStocks: any[];
+  private stocks: any[];
+
+  constructor(public stockService: StockService) { 
+    this.stocks = [
+      {name: 'Apple', symbol: 'AAPL'},
+      {name: 'Facebook', symbol: 'FB'},
+      {name: 'Microsoft', symbol: 'MSFT'},
+      {name: 'Nvidia', symbol: 'NVDA'},
+      {name: 'Google', symbol: 'GOOG'}
+    ];
+  }
 
   ngOnInit() {
     this.stockService.getStock(window.sessionStorage.getItem("token")).subscribe(res => {
@@ -20,6 +30,7 @@ export class StockEditComponent implements OnInit {
       }
     });
 
+    this.selectedStocks = this.stockList;
     console.log("Array: ", this.stockList);
 
     let temp = {
@@ -37,6 +48,22 @@ export class StockEditComponent implements OnInit {
     this.stockService.addStock(temp).subscribe(res => {
       console.log("Res: ", res);
     });
+  }
+
+  update() {
+    console.log("test", this.selectedStocks);
+  }
+
+  idk() {
+    /* for(let i in this.stockList) {
+      for(let j in this.stocks) {
+        if(j == i) {
+          return true;
+        }
+      }
+    }
+    return false; */
+    return true;
   }
 
 }

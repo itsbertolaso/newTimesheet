@@ -24,6 +24,9 @@ import { InputTextModule } from "primeng/inputtext";
 import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
 import { NavstocksComponent } from './shared/navstocks/navstocks.component';
 import { StockEditComponent } from './pages/stock-edit/stock-edit.component';
+import { StockPageComponent } from './pages/stock-page/stock-page.component';
+
+import { ListboxModule } from 'primeng/listbox';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { StockEditComponent } from './pages/stock-edit/stock-edit.component';
     LoginPageComponent,
     RegisterPageComponent,
     NavstocksComponent,
-    StockEditComponent
+    StockEditComponent,
+    StockPageComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +52,8 @@ import { StockEditComponent } from './pages/stock-edit/stock-edit.component';
     CardModule,
     ButtonModule,
     PasswordModule,
-    InputTextModule
+    InputTextModule,
+    ListboxModule
   ],
   providers: [ApiService, AuthenticationGuard, AuthenticationService],
   bootstrap: [AppComponent]

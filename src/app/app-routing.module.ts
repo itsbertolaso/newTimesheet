@@ -10,13 +10,14 @@ import { AuthenticationGuard } from "./shared/guard/authentication.guard";
 import { RegisterPageComponent } from "./pages/register-page/register-page/register-page.component";
 import { ReactiveFormsModule } from "@angular/forms";
 import { StockEditComponent } from './pages/stock-edit/stock-edit.component';
+import { StockPageComponent } from './pages/stock-page/stock-page.component';
 
 const routes: Routes = [
-  {
+ /*  {
     path: "home",
     component: HomePageComponent,
     canActivate: [AuthenticationGuard]
-  },
+  }, */
   {
     path: "dipendenti",
     component: DipendentiPageComponent,
@@ -44,6 +45,10 @@ const routes: Routes = [
     path: "dipendenti/:id",
     component: DettaglioDipendentiPageComponent,
     canActivate: [AuthenticationGuard]
+  },
+  {
+    path: "stock",
+    component: StockPageComponent
   },
   {
     path: "stock/update",
