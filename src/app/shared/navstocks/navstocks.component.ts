@@ -18,6 +18,7 @@ export class NavstocksComponent implements OnInit {
   }
 
   stockCall(domainService) {
+    if (window.sessionStorage.getItem("token") == null) return;
     this.generic = [];
     domainService.getStock(window.sessionStorage.getItem("token")).subscribe(res => {
       console.log("Calling stock api...");
