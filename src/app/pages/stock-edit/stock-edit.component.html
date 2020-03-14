@@ -1,7 +1,7 @@
 <div class="card mt-3">
-    <div class="card-body">
-      <div class="container-fluid d-flex justify-content-center">
-       <!--  <div class="row">
+  <div class="card-body">
+    <div class="container-fluid d-flex justify-content-center">
+      <!--  <div class="row">
           <div class="col">
             <p-listbox [options]="stocks" [(ngModel)]="selectedStocks" multiple="multiple" checkbox="checkbox" filter="filter" optionLabel="name">
                 <p-header>
@@ -10,25 +10,31 @@
               </p-listbox>
           </div>
         </div> -->
-        <div class="row" *ngFor="let i of stocks">
+      <!--<div class="row" *ngFor="let i of stocks">
             <div class="col" >
                 <input type="checkbox" *ngIf="idk">
                 <label for>{{ i.name }}</label>
             </div>
+        </div>-->
+
+      <div class="row" *ngFor="let i of stocks">
+        <div class="col">
+          <input type="checkbox" [checked]="toggle(i.symbol)" (change)="check($event, i.symbol)">
+          <label for>{{ i.name }}</label>
         </div>
       </div>
-      <p class="d-flex justify-content-center">Selected stocks: <span *ngFor="let c of stockList" style="margin-right: 10px">{{c.name}}</span></p>
-      <div class="row">
-        <div class="col d-flex justify-content-center mt-5">
-          <div class="text-center">
-            <button
-              class="btn btn-primary"
-              (click)="update()"
-            >
-              Submit
-            </button>
-          </div>
+
+    </div>
+    <p class="d-flex justify-content-center">Selected stocks: <span *ngFor="let c of stockList"
+        style="margin-right: 10px">{{c.name}}</span></p>
+    <div class="row">
+      <div class="col d-flex justify-content-center mt-5">
+        <div class="text-center">
+          <button class="btn btn-primary" (click)="update()">
+            Submit
+          </button>
         </div>
       </div>
     </div>
+  </div>
 </div>

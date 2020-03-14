@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StockService } from 'src/core/service/stock.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stock-edit',
@@ -12,13 +13,13 @@ export class StockEditComponent implements OnInit {
   private selectedStocks: any[];
   private stocks: any[];
 
-  constructor(public stockService: StockService) { 
+  constructor(public stockService: StockService, public router: Router) {
     this.stocks = [
-      {name: 'Apple', symbol: 'AAPL'},
-      {name: 'Facebook', symbol: 'FB'},
-      {name: 'Microsoft', symbol: 'MSFT'},
-      {name: 'Nvidia', symbol: 'NVDA'},
-      {name: 'Google', symbol: 'GOOG'}
+      { name: 'Apple', symbol: 'AAPL' },
+      { name: 'Facebook', symbol: 'FB' },
+      { name: 'Microsoft', symbol: 'MSFT' },
+      { name: 'Nvidia', symbol: 'NVDA' },
+      { name: 'Google', symbol: 'GOOG' }
     ];
   }
 
@@ -40,7 +41,7 @@ export class StockEditComponent implements OnInit {
 
     console.log("Temp: ", temp);
 
-    this.invia(temp);
+    //this.invia(temp);
     console.log("Ciao sono dentro allo stock edi.. ecco le stock attuali: ", this.stockList);
   }
 
@@ -50,8 +51,31 @@ export class StockEditComponent implements OnInit {
     });
   }
 
+  toggle(symbol: any) {
+    var found = this.stockList.find(function (element) {
+      return element == symbol;
+    });
+    return found;
+  }
+
+  check(event: any, symbol: any) {
+    if (event.srcElement.checked) {
+      this.stockList.push(symbol);
+      console.log(this.stockList);
+    } else {
+      let i = this.stockList.indexOf(symbol);
+      this.stockList.splice(i, 1);
+      console.log(this.stockList);
+    }
+  }
+
   update() {
-    console.log("test", this.selectedStocks);
+    let temp = {
+      "token": window.sessionStorage.getItem("token"),
+      "value": this.stockList
+    }
+    this.invia(temp);
+    this.router.navigate(["dipendenti"]);
   }
 
   idk() {

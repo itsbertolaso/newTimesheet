@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { StockService } from "src/core/service/stock.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-navstocks",
@@ -9,7 +10,7 @@ import { StockService } from "src/core/service/stock.service";
 export class NavstocksComponent implements OnInit {
   public generic: Array<any> = [];
 
-  constructor(public domainService: StockService) { }
+  constructor(public domainService: StockService, public router: Router) { }
 
   ngOnInit() {
     this.stockCall(this.domainService);
@@ -33,5 +34,9 @@ export class NavstocksComponent implements OnInit {
 
   isLoggedIn() {
     return window.sessionStorage.getItem("token") != null;
+  }
+
+  option() {
+    this.router.navigate(["stock/update"]);
   }
 }
