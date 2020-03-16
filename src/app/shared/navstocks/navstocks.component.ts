@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { StockService } from "src/core/service/stock.service";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-navstocks",
@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class NavstocksComponent implements OnInit {
   public generic: Array<any> = [];
 
-  constructor(public domainService: StockService, public router: Router) { }
+  constructor(public domainService: StockService, public router: Router) {}
 
   ngOnInit() {
     this.stockCall(this.domainService);
